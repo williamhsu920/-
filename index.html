@@ -3,248 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 關西冬日・冰雪神話與雙城夜景</title>
+    <title>2026 關西冬日・互動行程表</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Noto Sans TC', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); }
+        /* 隱藏滾動條但保持功能 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* 完成項目的樣式 */
+        .completed { text-decoration: line-through; color: #94a3b8; }
+        .completed .time-tag { color: #cbd5e1; font-weight: normal; }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 antialiased">
+<body class="bg-slate-100 text-slate-800 antialiased pb-20">
 
-    <header class="relative bg-gradient-to-r from-blue-900 to-slate-800 text-white py-12 px-6 shadow-lg">
+    <header class="bg-gradient-to-r from-indigo-900 to-slate-800 text-white py-10 px-6 shadow-lg">
         <div class="max-w-3xl mx-auto text-center">
-            <div class="inline-block bg-blue-500 text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-wide uppercase">Jan 13 - Jan 19, 2026</div>
-            <h1 class="text-4xl font-bold mb-2">關西冬日三人行</h1>
-            <p class="text-blue-200 text-lg">京都雪景 ✕ 神戶牛排 ✕ 大阪夜景</p>
-            <div class="mt-6 flex justify-center space-x-4 text-sm">
-                <span class="flex items-center"><i class="fas fa-plane-arrival mr-2"></i> MM24</span>
-                <span class="flex items-center"><i class="fas fa-plane-departure mr-2"></i> D7379</span>
-            </div>
+            <div class="inline-block bg-indigo-500 text-xs font-bold px-3 py-1 rounded-full mb-3 tracking-wide">INTERACTIVE V2.0</div>
+            <h1 class="text-3xl font-bold mb-1">關西冬日三人行</h1>
+            <p class="text-indigo-200 text-sm">點擊項目可勾選完成 · 下方可寫筆記</p>
         </div>
     </header>
 
-    <nav class="sticky top-0 z-50 bg-white/95 shadow-sm overflow-x-auto whitespace-nowrap py-3 px-4 no-scrollbar">
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm overflow-x-auto whitespace-nowrap py-3 px-4 no-scrollbar">
         <div class="flex space-x-2 max-w-3xl mx-auto">
-            <a href="#d1" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-sm font-medium transition">D1 抵達</a>
-            <a href="#d2" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-sm font-medium transition">D2 貴船</a>
-            <a href="#d3" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-sm font-medium transition">D3 伊根</a>
-            <a href="#d4" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-sm font-medium transition">D4 移動</a>
-            <a href="#d5" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-sm font-medium transition">D5 神戶</a>
-            <a href="#d6" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-sm font-medium transition">D6 勝尾寺</a>
-            <a href="#d7" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-sm font-medium transition">D7 購物</a>
+            <button onclick="scrollToId('d1')" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-100 text-sm font-medium transition text-slate-600">D1 抵達</button>
+            <button onclick="scrollToId('d2')" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-100 text-sm font-medium transition text-slate-600">D2 貴船</button>
+            <button onclick="scrollToId('d3')" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-100 text-sm font-medium transition text-slate-600">D3 伊根</button>
+            <button onclick="scrollToId('d4')" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-100 text-sm font-medium transition text-slate-600">D4 移動</button>
+            <button onclick="scrollToId('d5')" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-100 text-sm font-medium transition text-slate-600">D5 神戶</button>
+            <button onclick="scrollToId('d6')" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-100 text-sm font-medium transition text-slate-600">D6 勝尾寺</button>
+            <button onclick="scrollToId('d7')" class="px-4 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-100 text-sm font-medium transition text-slate-600">D7 購物</button>
         </div>
     </nav>
 
-    <main class="max-w-3xl mx-auto p-4 space-y-8 pb-24">
+    <main class="max-w-3xl mx-auto p-4 space-y-6">
 
-        <section class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-blue-500">
-            <h2 class="text-xl font-bold mb-4 flex items-center"><i class="fas fa-bed text-blue-500 mr-2"></i> 住宿基地</h2>
-            <div class="space-y-3">
-                <div class="flex justify-between border-b pb-2">
-                    <div>
-                        <span class="text-xs text-gray-500 block">D1-D3 (3晚)</span>
-                        <span class="font-medium">Hotel Vischio Kyoto</span>
-                    </div>
-                    <span class="text-xs bg-gray-100 px-2 py-1 rounded self-center">京都八條口</span>
+        <section class="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-indigo-500">
+            <h2 class="text-lg font-bold mb-3 text-indigo-900"><i class="fas fa-home mr-2"></i>住宿資訊</h2>
+            <div class="space-y-2 text-sm">
+                <div class="flex justify-between border-b border-dashed pb-2">
+                    <span>D1-D3: Hotel Vischio Kyoto</span>
+                    <span class="font-mono bg-gray-100 px-1 rounded">京都八條口</span>
                 </div>
                 <div class="flex justify-between">
-                    <div>
-                        <span class="text-xs text-gray-500 block">D4-D6 (3晚)</span>
-                        <span class="font-medium">Apartment Hotel 11</span>
-                    </div>
-                    <span class="text-xs bg-gray-100 px-2 py-1 rounded self-center">新今宮3號</span>
+                    <span>D4-D6: Apartment Hotel 11</span>
+                    <span class="font-mono bg-gray-100 px-1 rounded">新今宮3號</span>
                 </div>
             </div>
         </section>
 
-        <div id="d1" class="space-y-4">
-            <h3 class="text-2xl font-bold text-slate-800 sticky top-14 bg-slate-100 py-2 z-10">Day 1 <span class="text-sm font-normal text-gray-500">1/13 (二)</span></h3>
-            <div class="bg-white rounded-xl p-5 shadow-sm space-y-4">
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">13:30</div>
-                    <div>抵達 KIX (MM24)，換 JR Pass，搭 HARUKA</div>
+        <div id="d1" class="day-container bg-white rounded-xl shadow-sm overflow-hidden">
+            <div class="bg-slate-50 px-5 py-3 border-b flex justify-between items-center sticky top-0 z-0">
+                <h3 class="font-bold text-lg text-slate-800">Day 1 <span class="text-xs font-normal text-gray-500 ml-2">1/13 (二)</span></h3>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">抵達 & 夜景</span>
+            </div>
+            <div class="p-5 space-y-4">
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd1-1')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">13:30</span> 抵達 KIX (MM24) / 換 JR Pass / 搭 HARUKA</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">16:30</div>
-                    <div>Check-in Vischio Kyoto (放鬆、喝迎賓飲料)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd1-2')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">16:30</span> Check-in Vischio (放行李、休息)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">17:00</div>
-                    <div><span class="bg-yellow-100 px-1 rounded">京都塔夕陽</span> & 車站空中小路</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd1-3')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">17:00</span> 京都塔看夕陽 (飯店對面)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">19:00</div>
-                    <div>晚餐：拉麵小路 / Porta 地下街 (東洋亭)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd1-4')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">19:00</span> 晚餐：拉麵小路 / 東洋亭</div>
+                </div>
+                
+                <div class="mt-4 pt-4 border-t border-dashed border-gray-200">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block"><i class="fas fa-pen mr-1"></i>筆記 / 備忘錄 (自動儲存)</label>
+                    <textarea id="note-d1" class="w-full bg-yellow-50 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-300 resize-none h-24" placeholder="例如：JR Pass 兌換碼、晚餐想吃的店..."></textarea>
                 </div>
             </div>
         </div>
 
-        <div id="d2" class="space-y-4">
-            <h3 class="text-2xl font-bold text-slate-800 sticky top-14 bg-slate-100 py-2 z-10">Day 2 <span class="text-sm font-normal text-gray-500">1/14 (三)</span></h3>
-            <div class="bg-white rounded-xl p-5 shadow-sm space-y-4">
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">09:30</div>
-                    <div>下鴨神社 & 河合神社 (森林浴)</div>
+        <div id="d2" class="day-container bg-white rounded-xl shadow-sm overflow-hidden">
+            <div class="bg-slate-50 px-5 py-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-lg text-slate-800">Day 2 <span class="text-xs font-normal text-gray-500 ml-2">1/14 (三)</span></h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full">貴船點燈</span>
+            </div>
+            <div class="p-5 space-y-4">
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd2-1')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">09:30</span> 下鴨神社 & 河合神社</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">12:30</div>
-                    <div>搭叡山電鐵往 <span class="font-bold">鞍馬寺</span> (爬山/纜車)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd2-2')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">12:30</span> 搭叡山電鐵往鞍馬 (吃名代豆餅)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">15:30</div>
-                    <div><span class="font-bold text-red-500">貴船神社</span> (水占卜、奧宮)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd2-3')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">13:10</span> 鞍馬寺 (搭纜車上山)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">17:00</div>
-                    <div><i class="fas fa-camera text-gray-400 mr-1"></i> 貴船燈籠點燈 (日落後)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd2-4')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">15:30</span> 貴船神社 (水占卜、紅燈籠)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">18:30</div>
-                    <div>晚餐：一乘寺拉麵街 (極雞/高安)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd2-5')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">18:30</span> 晚餐：一乘寺拉麵街</div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-dashed border-gray-200">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block"><i class="fas fa-pen mr-1"></i>筆記</label>
+                    <textarea id="note-d2" class="w-full bg-yellow-50 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-300 resize-none h-24" placeholder="備註..."></textarea>
                 </div>
             </div>
         </div>
 
-        <div id="d3" class="space-y-4">
-            <h3 class="text-2xl font-bold text-slate-800 sticky top-14 bg-slate-100 py-2 z-10">Day 3 <span class="text-sm font-normal text-gray-500">1/15 (四)</span></h3>
-            <div class="bg-white rounded-xl p-5 shadow-sm space-y-4 border-l-4 border-cyan-400">
-                <div class="bg-cyan-50 p-2 rounded text-sm text-cyan-800 mb-2">
-                    <i class="fas fa-ticket-alt mr-1"></i> 使用 JR 廣域券 Day 1
+        <div id="d3" class="day-container bg-white rounded-xl shadow-sm overflow-hidden border-2 border-cyan-100">
+            <div class="bg-cyan-50 px-5 py-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-lg text-slate-800">Day 3 <span class="text-xs font-normal text-gray-500 ml-2">1/15 (四)</span></h3>
+                <span class="text-xs bg-cyan-200 text-cyan-900 px-2 py-0.5 rounded-full">伊根舟屋</span>
+            </div>
+            <div class="p-5 space-y-4">
+                 <div class="bg-cyan-50 text-cyan-800 text-xs p-2 rounded mb-2 font-bold"><i class="fas fa-train mr-1"></i> 使用 JR 廣域券 Day 1</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd3-1')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">07:32</span> 搭 Hashidate 1號 (31月台)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">07:32</div>
-                    <div>搭乘 <span class="font-bold">Hashidate 1號</span> (31月台) 直達天橋立</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd3-2')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">10:00</span> 天橋立轉巴士 -> 伊根</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">10:00</div>
-                    <div>轉巴士前往 <span class="font-bold">伊根舟屋</span></div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd3-3')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">11:00</span> 伊根灣遊覽船 (餵海鷗、午餐)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">11:00</div>
-                    <div>伊根灣遊覽船 (餵海鷗) + 舟屋食堂午餐</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd3-4')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">14:30</span> 天橋立 View Land (飛龍觀)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">14:30</div>
-                    <div>回天橋立 View Land (飛龍觀)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd3-5')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">18:09</span> Hashidate 8號 回京都</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">18:09</div>
-                    <div>搭 Hashidate 8號 返回京都</div>
+                <div class="mt-4 pt-4 border-t border-dashed border-gray-200">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block"><i class="fas fa-pen mr-1"></i>筆記</label>
+                    <textarea id="note-d3" class="w-full bg-yellow-50 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-300 resize-none h-24" placeholder="備註..."></textarea>
                 </div>
             </div>
         </div>
 
-        <div id="d4" class="space-y-4">
-            <h3 class="text-2xl font-bold text-slate-800 sticky top-14 bg-slate-100 py-2 z-10">Day 4 <span class="text-sm font-normal text-gray-500">1/16 (五)</span></h3>
-            <div class="bg-white rounded-xl p-5 shadow-sm space-y-4">
-                <p class="text-xs text-gray-500 bg-gray-100 p-2 rounded">行李寄放 Vischio 櫃檯</p>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">09:00</div>
-                    <div><span class="text-green-600 font-bold">[選項]</span> 伏見稻荷大社 (千本鳥居)</div>
+        <div id="d4" class="day-container bg-white rounded-xl shadow-sm overflow-hidden">
+            <div class="bg-slate-50 px-5 py-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-lg text-slate-800">Day 4 <span class="text-xs font-normal text-gray-500 ml-2">1/16 (五)</span></h3>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full">移動日</span>
+            </div>
+            <div class="p-5 space-y-4">
+                <div class="bg-yellow-50 text-yellow-800 text-xs p-2 rounded mb-2"><i class="fas fa-bell mr-1"></i> 記得退房，行李寄放 Vischio</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd4-1')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">09:00</span> (選項) 伏見稻荷大社</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">11:00</div>
-                    <div><span class="font-bold">錦市場</span> 早午餐 (豆乳甜甜圈)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd4-2')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">11:00</span> 錦市場 (早午餐)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">13:00</div>
-                    <div>八坂神社 ➔ 二三年坂 ➔ 清水寺</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd4-3')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">13:00</span> 八坂神社 -> 清水寺</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">19:00</div>
-                    <div>回飯店領行李，搭 <span class="font-bold text-purple-600">HARUKA</span> 直達新今宮</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd4-4')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">19:00</span> 領行李 -> HARUKA -> 新今宮</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">20:30</div>
-                    <div>Check-in 住一新今宮 3號店</div>
+                <div class="mt-4 pt-4 border-t border-dashed border-gray-200">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block"><i class="fas fa-pen mr-1"></i>筆記</label>
+                    <textarea id="note-d4" class="w-full bg-yellow-50 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-300 resize-none h-24" placeholder="例如：住一飯店密碼..."></textarea>
                 </div>
             </div>
         </div>
 
-        <div id="d5" class="space-y-4">
-            <h3 class="text-2xl font-bold text-slate-800 sticky top-14 bg-slate-100 py-2 z-10">Day 5 <span class="text-sm font-normal text-gray-500">1/17 (六)</span></h3>
-            <div class="bg-white rounded-xl p-5 shadow-sm space-y-4">
-                <h4 class="font-bold text-lg text-center pb-2 border-b">舌尖上的港都：神戶牛與千萬夜景</h4>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">10:00</div>
-                    <div>木津市場 / 難波八阪神社 (早午餐)</div>
+        <div id="d5" class="day-container bg-white rounded-xl shadow-sm overflow-hidden">
+             <div class="bg-slate-50 px-5 py-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-lg text-slate-800">Day 5 <span class="text-xs font-normal text-gray-500 ml-2">1/17 (六)</span></h3>
+                <span class="text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded-full">神戶夜景</span>
+            </div>
+            <div class="p-5 space-y-4">
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd5-1')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">10:00</span> 木津市場 / 難波八阪神社</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">12:30</div>
-                    <div>神戶三宮：<span class="font-bold bg-yellow-100 px-1">神戶牛排午餐</span> (需預約)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd5-2')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">12:30</span> 神戶午餐：神戶牛 (三宮/元町)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">14:30</div>
-                    <div>北野異人館 / 南京町 散策</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd5-3')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">17:00</span> 巴士 18 號 -> 摩耶山千萬夜景</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">17:00</div>
-                    <div>搭 <span class="bg-red-100 text-red-600 px-1 font-bold">巴士 18 號</span> 上摩耶山</div>
-                </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">18:00</div>
-                    <div><i class="fas fa-star text-yellow-400"></i> 掬星台千萬夜景</div>
+                 <div class="mt-4 pt-4 border-t border-dashed border-gray-200">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block"><i class="fas fa-pen mr-1"></i>筆記</label>
+                    <textarea id="note-d5" class="w-full bg-yellow-50 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-300 resize-none h-24" placeholder="備註..."></textarea>
                 </div>
             </div>
         </div>
 
-        <div id="d6" class="space-y-4">
-            <h3 class="text-2xl font-bold text-slate-800 sticky top-14 bg-slate-100 py-2 z-10">Day 6 <span class="text-sm font-normal text-gray-500">1/18 (日)</span></h3>
-            <div class="bg-white rounded-xl p-5 shadow-sm space-y-4">
-                 <h4 class="font-bold text-lg text-center pb-2 border-b">勝運全開：達摩與天際線</h4>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">09:00</div>
-                    <div>前往 <span class="font-bold">勝尾寺</span> (滿山達摩)</div>
+        <div id="d6" class="day-container bg-white rounded-xl shadow-sm overflow-hidden">
+             <div class="bg-slate-50 px-5 py-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-lg text-slate-800">Day 6 <span class="text-xs font-normal text-gray-500 ml-2">1/18 (日)</span></h3>
+                <span class="text-xs bg-orange-100 text-orange-800 px-2 py-0.5 rounded-full">勝運達摩</span>
+            </div>
+            <div class="p-5 space-y-4">
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd6-1')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">09:00</span> 勝尾寺 (滿山達摩)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">14:00</div>
-                    <div>大阪城公園 (天守閣 16:30最後入場)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd6-2')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">14:00</span> 大阪城公園 (天守閣 16:30止)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">16:30</div>
-                    <div>梅田逛街 / 下午茶</div>
+                 <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd6-3')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">16:30</span> 梅田逛街 / 阿倍野夜景</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">19:00</div>
-                    <div>通天閣 & 新世界 (吃串炸)</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd6-4')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">19:00</span> 新世界 & 通天閣串炸</div>
+                </div>
+                 <div class="mt-4 pt-4 border-t border-dashed border-gray-200">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block"><i class="fas fa-pen mr-1"></i>筆記</label>
+                    <textarea id="note-d6" class="w-full bg-yellow-50 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-300 resize-none h-24" placeholder="備註..."></textarea>
                 </div>
             </div>
         </div>
 
-        <div id="d7" class="space-y-4">
-            <h3 class="text-2xl font-bold text-slate-800 sticky top-14 bg-slate-100 py-2 z-10">Day 7 <span class="text-sm font-normal text-gray-500">1/19 (一)</span></h3>
-            <div class="bg-white rounded-xl p-5 shadow-sm space-y-4">
-                 <div class="bg-red-50 p-2 rounded text-sm text-red-800 mb-2">
-                    <i class="fas fa-suitcase mr-1"></i> 行李寄放：JR/南海 新今宮站置物櫃
+        <div id="d7" class="day-container bg-white rounded-xl shadow-sm overflow-hidden">
+             <div class="bg-slate-50 px-5 py-3 border-b flex justify-between items-center">
+                <h3 class="font-bold text-lg text-slate-800">Day 7 <span class="text-xs font-normal text-gray-500 ml-2">1/19 (一)</span></h3>
+                <span class="text-xs bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full">返程</span>
+            </div>
+            <div class="p-5 space-y-4">
+                 <div class="bg-red-50 text-red-800 text-xs p-2 rounded mb-2"><i class="fas fa-lock mr-1"></i> 行李鎖在新今宮站置物櫃</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd7-1')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">10:00</span> 黑門市場 / 難波八阪神社</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">10:00</div>
-                    <div>黑門市場 / 難波逛街</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd7-2')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">13:00</span> 心齋橋、道頓堀最後補貨</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">13:00</div>
-                    <div>心齋橋、道頓堀最後補貨</div>
+                <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd7-3')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">17:30</span> 新今宮領行李 -> KIX</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">17:30</div>
-                    <div>新今宮領行李，前往 KIX</div>
+                 <div class="todo-item flex items-start cursor-pointer" onclick="toggleTodo(this, 'd7-4')">
+                    <div class="w-6 h-6 mt-0.5 mr-3 rounded border-2 border-gray-300 flex items-center justify-center text-white transition-colors"><i class="fas fa-check text-xs"></i></div>
+                    <div><span class="time-tag font-bold text-indigo-600 text-sm block">20:45</span> 飛機起飛 (D7379)</div>
                 </div>
-                <div class="flex items-start">
-                    <div class="w-16 text-sm font-bold text-blue-600">20:45</div>
-                    <div>飛機起飛 (D7379) 👋</div>
+                 <div class="mt-4 pt-4 border-t border-dashed border-gray-200">
+                    <label class="text-xs font-bold text-gray-400 mb-1 block"><i class="fas fa-pen mr-1"></i>筆記</label>
+                    <textarea id="note-d7" class="w-full bg-yellow-50 rounded-lg p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-300 resize-none h-24" placeholder="備註..."></textarea>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <footer class="bg-slate-800 text-slate-400 py-8 text-center text-sm">
-        <p class="mb-2">Emergency: 110 (Police) / 119 (Fire)</p>
-        <p>Created for 2026 Kansai Trip</p>
+    <footer class="bg-slate-800 text-slate-400 py-10 text-center text-sm">
+        <p class="mb-4">資料會自動儲存在您的裝置中</p>
+        <button onclick="clearAllData()" class="text-xs border border-slate-600 px-3 py-1 rounded hover:bg-slate-700 transition">清除所有勾選與筆記</button>
     </footer>
 
+    <script>
+        // 1. 滾動功能
+        function scrollToId(id) {
+            const element = document.getElementById(id);
+            const offset = 80; // Header height offset
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        }
+
+        // 2. 初始化：載入資料
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTodos();
+            loadNotes();
+        });
+
+        // 3. Todo 功能
+        function toggleTodo(element, id) {
+            element.classList.toggle('completed');
+            const checkbox = element.querySelector('div:first-child');
+            
+            if (element.classList.contains('completed')) {
+                checkbox.classList.remove('border-gray-300');
+                checkbox.classList.add('bg-indigo-500', 'border-indigo-500');
+                saveData('todo_' + id, 'true');
+            } else {
+                checkbox.classList.add('border-gray-300');
+                checkbox.classList.remove('bg-indigo-500', 'border-indigo-500');
+                saveData('todo_' + id, 'false');
+            }
+        }
+
+        function loadTodos() {
+            const items = document.querySelectorAll('.todo-item');
+            items.forEach(item => {
+                const onclickAttr = item.getAttribute('onclick');
+                const id = onclickAttr.match(/'([^']+)'/)[1]; // Extract ID
+                const savedStatus = localStorage.getItem('todo_' + id);
+                
+                if (savedStatus === 'true') {
+                    item.classList.add('completed');
+                    const checkbox = item.querySelector('div:first-child');
+                    checkbox.classList.remove('border-gray-300');
+                    checkbox.classList.add('bg-indigo-500', 'border-indigo-500');
+                }
+            });
+        }
+
+        // 4. 筆記功能 (自動儲存)
+        const textareas = document.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+            textarea.addEventListener('input', (e) => {
+                saveData('note_' + e.target.id, e.target.value);
+            });
+        });
+
+        function loadNotes() {
+            textareas.forEach(textarea => {
+                const savedNote = localStorage.getItem('note_' + textarea.id);
+                if (savedNote) {
+                    textarea.value = savedNote;
+                }
+            });
+        }
+
+        // 通用儲存函數
+        function saveData(key, value) {
+            localStorage.setItem(key, value);
+        }
+
+        // 清除資料
+        function clearAllData() {
+            if(confirm('確定要清除所有筆記和勾選紀錄嗎？')) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+    </script>
 </body>
 </html>
